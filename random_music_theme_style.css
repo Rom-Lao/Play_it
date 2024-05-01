@@ -296,3 +296,14 @@ audio {
     display: none;
 }
 
+/*styling footer*/
+.footer {
+    text-align: right;
+    margin-top: -20px;
+    margin-right: 5px;
+}
+span {
+    font-size: 11px;
+    color: white;
+
+}
