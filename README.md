@@ -1,6 +1,6 @@
-# project name
+# BestPart_of_Ksongs
 
-**project name** is like a playlist, where you can discover (my) preferred Kpop songs, the **full** song is **not** played, but rather the **best part** of it.
+**BestPart_of_Ksongs** is like a playlist, where you can discover (my) preferred Kpop songs, the **full** song is **not** played, but rather the **best part** of it, while having a lot of interesting features.
 
 
 # Features
@@ -22,11 +22,16 @@
    * Change the icon play/pause.
    * Stop the glowing border.
 
-# Technologies used 
+# Technology used 
 * HTML.
-* CSS.
-* Javascript.
-* GSAP (JS library for animation).
+* CSS
+    * for styling the control buttons, card image, image background, song title animation text, glowing and gradient effect on the image background and border card respectively.
+      
+* Javascript
+    * to handle different click events and save state of audio.
+      
+* GSAP (JS library for animation)
+    * used to animate how the header, card image, control buttons and song title will appear when the user enter for the first time to the website.
 
 
 
