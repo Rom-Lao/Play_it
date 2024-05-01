@@ -26,6 +26,14 @@ the card when audio is played*/
     --border_clr_3: #ffadc7;
     --color_6: #aa7bc3;
     --color_7: #290628;
+    --grad_clr_1: #ada7ff;
+    --grad_clr_2: #faedcd;
+    --grad_clr_3: #eaf2d7;
+    --grad_clr_4: #c8b6ff;
+    --grad_clr_5: #e0c3fc;
+    --grad_clr_6: #d8f3dc;
+
+
     
 }
 
@@ -104,12 +112,12 @@ here the goal is to put on top of background to add some nice effect*/
     z-index: -1;
     background: conic-gradient(
         from var(--gradient-angle),
-        var(--border_clr_1),
-        var(--border_clr_2),
-        var(--text_clr_2),
-        var(--bg-clr),
-        var(--border_clr_1),
-        var(--border_clr_2));
+        var(--grad_clr_1),
+        var(--grad_clr_2),
+        var(--grad_clr_3),
+        var(--grad_clr_4),
+        var(--grad_clr_5),
+        var(--grad_clr_6));
     animation: rotation 15s ease-in-out infinite alternate;                            
 }
 
@@ -119,7 +127,7 @@ here the goal is to put on top of background to add some nice effect*/
         --gradient-angle: 0deg;
     }
     to {
-        opacity: 0.5;
+        opacity: 0.3;
         --gradient-angle: 360deg;
     }
 }
@@ -232,7 +240,7 @@ button:hover {
 
 /*styling the button when user "click" on them*/
 button:active {
-    box-shadow: 5px 15px 15px var(--text_clr_2) inset;
+    box-shadow: 15px 15px 15px var(--border_clr_1) inset;
 }
 
 /* styling the title song*/
