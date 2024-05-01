@@ -21,19 +21,20 @@ let bg_image = document.querySelector(".song_img_test");
 
 // controlling audio (playing or paused) 
 //and changing the icon accordingly
-let my_audio = document.querySelector("audio");
-let sound_img = document.querySelector("#sound_image");
+//let my_audio = document.querySelector("audio");
+let pause_play_icon = document.querySelector("#pause_play_icon");
 
+// changing image on click
 let image = document.querySelector("#song_img");
-let i = 0;
 
+// grab audio to change songs
 let audio_source = document.querySelector("audio")
-let border_effect = document.querySelector(".box");
 
+// show/hide glowing border depending if music is on/off
+let border_effect = document.querySelector(".box");
 
 // calling updateText() to display current song title
 updateText(); 
-
 // keeping track of images positions, if previous then index - 1, if next -> index + 1
 // if we are at the end of our images then go back to index "0"
 // if we at index = 0 and we click prev, we go to last element of imageUrls
@@ -82,47 +83,38 @@ function updateImage(){
 
 //changing song, making sure that we only play the song if "isPlay = 1"
 function updateAudio(){
-
+    //fetching the correct song
     audio_source.src = audioUrls[audioShowIndex];
-
-    if(isPlay){
-        sound_img.src = "./images/play.png";
+    
+    // if isPlay = 0 it means it's paused so we need 
+    //to play is and change it to 1
+    if(isPlay == 0){
+        // 1 is the highest ; and 0.1 is muted  
+        audio_source.volume = 0.1;
         audio_source.load(); // we need to load the audio first
-        audio_source.play();  
-        audio_source.volume = 0.1; // 1 is the highest ; and 0.0 is muted  
+        audio_source.play();
+        pause_play_icon.src = "./images/play.png";
+        border_effect.style.visibility = "visible";
+        isPlay = 1;
+    } 
+    else{
+        audio_source.pause();
+        border_effect.style.visibility = "hidden";
+        pause_play_icon.src = "./images/pause.png";
+        isPlay = 0;
     }
 };
 
+// printing current song title
 function updateText(){
-    // printing current song title
      document.querySelector(".song__title").innerHTML = titles[titleShowIndex];
 };
 
-
-/*playing/pausing the song*/
-function playSound(){
-    my_audio.volume = 0.1; // always lowering the volume,
-    //if audio is paused, and we triggered this function it means it'll resume playing else it'll pause
-    // change the icon accordingly
-    if(my_audio.paused){
-        my_audio.play();
-        isPlay = 1; // to save state of pause/play when u move to another image-song
-        sound_img.src = "./images/play.png";
-        border_effect.style.visibility = "visible";
-    }
-    else{
-        my_audio.pause();
-        border_effect.style.visibility = "hidden";
-        isPlay = 0;
-        sound_img.src = "./images/pause.png";
-    }
-};
-
-
-// change icon play button when audio ends
+// change icon play button and 
+//disable border image glowing effect when audio ends
 window.addEventListener('load', function(){
-    my_audio.onended = function(){
-        sound_img.src = "./images/pause.png";
+    audio_source.onended = function(){
+        pause_play_icon.src = "./images/pause.png";
         border_effect.style.visibility = "hidden";
     }
 });
