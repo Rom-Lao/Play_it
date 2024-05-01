@@ -4,13 +4,24 @@
 
 
 # Features
-Song information are displayed in a card, which shows an image of the artist, and at the bottom it shows the song title.
-You can move to the next song or go to the previous one using controls.
-You can either pause/play the song.
-Song volume is set to minimum so you shouldn't worry about your ears.
-Each time you change the song, the background image also change. 
+1. **When a user plays a song, a glowing border will appear**, in order to be more lively.
+2. **Clicking "next" or "previous" will change**
+   * music.
+   * music title.
+   * image card.
+   * background image.
+     
+3. **Clicking on play/pause will make the following changes**
+   * Pause/play icon will change accordingly.
+   * If song is paused then the glowing effect will also stop.
+    
+1. 
 
-
+# Technologies used 
+* HTML.
+* CSS.
+* Javascript.
+* GSAP (JS library for animation).
 
 
 
