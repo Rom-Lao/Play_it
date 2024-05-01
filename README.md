@@ -29,7 +29,7 @@
    * Stop the glowing border.
 
 # Technology used 
-* HTML.
+* HTML
 * CSS
     * for styling the control buttons, card image, image background, song title animation text, glowing and gradient effect on the image background and border card respectively.
       
