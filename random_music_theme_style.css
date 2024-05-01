@@ -133,7 +133,7 @@ here the goal is to put on top of background to add some nice effect*/
 }
 
 /* adding glowing border effect on image */
-/*.box{
+.box{
     visibility: hidden;
     position: relative;
 }
@@ -164,7 +164,7 @@ here the goal is to put on top of background to add some nice effect*/
     50% {
         background-position: 300%;
     }
-}*/
+}
 
 /* change default behaviour so it can be displayed as a column in flexblox*/
 button { 
