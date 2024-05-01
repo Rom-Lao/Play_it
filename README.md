@@ -13,9 +13,14 @@
      
 3. **Clicking on play/pause will make the following changes**
    * Pause/play icon will change accordingly.
-   * If song is paused then the glowing effect will also stop.
+   * If the song is paused then the glowing effect will also stop.
     
-1. 
+4. **Audio State is saved when user changes a song**
+   * If user chooses to play a song, and move to the next/previous one, then the state is saved and the song will continue to play. Otherwise, the audio is not played.
+     
+5. **When a song ends, it will**
+   * Change the icon play/pause.
+   * Stop the glowing border.
 
 # Technologies used 
 * HTML.
