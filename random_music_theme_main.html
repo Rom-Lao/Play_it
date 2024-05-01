@@ -38,14 +38,13 @@
                 </div>
                 <div class="song__title_container"><p class="song__title"></p></div>
                 <div class="song_controls">
-                    <button class="play_sound" onclick="playSound(), addAnimation()"><img id="sound_image" src="./images/pause.png" alt=""></button>
+                    <button class="play_sound" onclick="updateAudio()"><img id="pause_play_icon" src="./images/pause.png" alt=""></button>
                     <button class="next_btn" id="next_button" onclick="goToNextImage(); goToNextSong(); goToNextTitle()"><img src="./images/next_arrow.png" alt=""></button>
                     <button class="prev_btn" id="previous_button" onclick="goToPreviousImage(); goToPreviousSong(); goToPreviousTitle();"><img src="./images/back_arrow.png" alt=""></button>    
-        
                 </div>
                 
             </div>
-            <audio controls>
+            <audio>
                 <source src="./audios/test_audio.mp3">
             </audio>
         </article>
