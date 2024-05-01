@@ -24,6 +24,13 @@ let bg_image = document.querySelector(".song_img_test");
 let my_audio = document.querySelector("audio");
 let sound_img = document.querySelector("#sound_image");
 
+let image = document.querySelector("#song_img");
+let i = 0;
+
+let audio_source = document.querySelector("audio")
+let border_effect = document.querySelector(".box");
+
+
 // calling updateText() to display current song title
 updateText(); 
 
@@ -68,17 +75,14 @@ function goToNextTitle(){
 // updating image, we grab the id of our img, then we change the .src
 // we already know the index value from goToNextImage() and goToPreviousImage()
 function updateImage(){
-    let image = document.querySelector("#song_img");
-    let i = 0;
     image.src = imageUrls[imageShowIndex];
     bg_image.src = imageUrls[imageShowIndex];
     updateAudio(); //calling audio because image changed
 };
 
-//updating audio, making sure that we only play the song if "isPlay = 1"
+//changing song, making sure that we only play the song if "isPlay = 1"
 function updateAudio(){
-    let audio_source = document.querySelector("audio")
-    let sound_img = document.querySelector("#sound_image");
+
     audio_source.src = audioUrls[audioShowIndex];
 
     if(isPlay){
@@ -95,19 +99,20 @@ function updateText(){
 };
 
 
-
+/*playing/pausing the song*/
 function playSound(){
     my_audio.volume = 0.1; // always lowering the volume,
-
     //if audio is paused, and we triggered this function it means it'll resume playing else it'll pause
     // change the icon accordingly
     if(my_audio.paused){
         my_audio.play();
         isPlay = 1; // to save state of pause/play when u move to another image-song
         sound_img.src = "./images/play.png";
+        border_effect.style.visibility = "visible";
     }
     else{
         my_audio.pause();
+        border_effect.style.visibility = "hidden";
         isPlay = 0;
         sound_img.src = "./images/pause.png";
     }
@@ -118,5 +123,6 @@ function playSound(){
 window.addEventListener('load', function(){
     my_audio.onended = function(){
         sound_img.src = "./images/pause.png";
+        border_effect.style.visibility = "hidden";
     }
 });

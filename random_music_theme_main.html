@@ -29,14 +29,16 @@
             <!-- main card that contains image, background_image, song title, 
                 song controls [pause/play, go next, go previous]-->
             <div class="song">
+                <div class="box">
+                    <img id="song_img" src="./images/test_image_3.jpg" alt="current_song_played" loading="lazy">
+                </div>
+
                 <div class="song__image">
                     <img class="song_img_test" src="./images/test_image_3.jpg" alt="current_song_played" loading="lazy">
-                    <img id="song_img" src="./images/test_image_3.jpg" alt="current_song_played" loading="lazy">
-                    
                 </div>
                 <div class="song__title_container"><p class="song__title"></p></div>
                 <div class="song_controls">
-                    <button class="play_sound" onclick="playSound()"><img id="sound_image" src="./images/pause.png" alt=""></button>
+                    <button class="play_sound" onclick="playSound(), addAnimation()"><img id="sound_image" src="./images/pause.png" alt=""></button>
                     <button class="next_btn" id="next_button" onclick="goToNextImage(); goToNextSong(); goToNextTitle()"><img src="./images/next_arrow.png" alt=""></button>
                     <button class="prev_btn" id="previous_button" onclick="goToPreviousImage(); goToPreviousSong(); goToPreviousTitle();"><img src="./images/back_arrow.png" alt=""></button>    
         

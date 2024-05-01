@@ -1,3 +1,17 @@
+/* creating custom property, to add a glowing effect to 
+the card when audio is played*/
+@property --gradient-angle{
+    syntax: '<angle>'; /*define data type that the property accept, here it's angle value (in deg)*/
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@property --bg-position{
+    syntax: '<background-position>';
+    inherits: false;
+    initial-value: 0px;
+}
+
 /* binding colors to variable, can be used to any element*/
 :root {
     --btn-clr: #dad7cd;
@@ -47,6 +61,7 @@ h1 {
     gap: 1px;
 }
 
+
 /* displaying the same image card but only half of it + a bit transparent*/
 .song_img_test {
     background-image: url("./images/test_image.jpg");
@@ -71,9 +86,45 @@ h1 {
     }
 }
 
+/* target container of image, it's basically a card
+here the goal is to put on top of background to add some nice effect*/
+.song__image::before, .song__image::after {
+    content: "";
+    opacity: 0.1;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right:0;
+    z-index: -2;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--border_clr_1),
+        var(--border_clr_2),
+        var(--text_clr_2),
+        var(--bg-clr),
+        var(--border_clr_1),
+        var(--border_clr_2));
+    animation: rotation 15s ease-in-out infinite alternate;                            
+}
+
+@keyframes rotation {
+    from {
+        opacity: 0;
+        --gradient-angle: 0deg;
+    }
+    to {
+        opacity: 0.5;
+        --gradient-angle: 360deg;
+    }
+}
+
 /* styling the card - > image */
 #song_img {
     position: relative;
+    visibility: visible;
     width: 330px;
     border-radius: 1rem;
     border: solid 2px #f0f1f3;
@@ -81,7 +132,42 @@ h1 {
     object-fit: cover;
 }
 
-button { /* change default behaviour so it can be displayed as a column in flexblox*/
+/* adding glowing border effect on image */
+/*.box{
+    visibility: hidden;
+    position: relative;
+}
+
+.box::before, .box::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    border-radius: 1rem;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    top: 50px;
+    left: -10px;
+    background: linear-gradient(45deg,
+        var(--bg-clr), var(--border_clr_1), var(--border_clr_2), var(--border_clr_3), var(--text_clr_1), var(--text_clr_5),
+        var(--bg-clr), var(--border_clr_1), var(--border_clr_2), var(--border_clr_3), var(--text_clr_1), var(--text_clr_5)
+    );
+    background-size: 300%;
+    animation: border-animate 12s linear infinite;
+}
+.box::after {
+    filter: blur(50px);
+}
+@keyframes border-animate {
+    0%, 100% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 300%;
+    }
+}*/
+
+/* change default behaviour so it can be displayed as a column in flexblox*/
+button { 
     display: block;
     margin: 5px;
     background-color: white;
