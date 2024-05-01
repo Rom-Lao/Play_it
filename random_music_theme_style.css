@@ -1,0 +1,192 @@
+/* binding colors to variable, can be used to any element*/
+:root {
+    --btn-clr: #dad7cd;
+    --bg-clr: #00043a; 
+    --text_clr_1: #0077b6;
+    --text_clr_2: #c05299;
+    --text_clr_3: #f0fff1;
+    --text_clr_2: #9683ec;
+    --text_clr_5: #f9f5e3;
+    --border_clr_1: #ff9d47;
+    --border_clr_2: #9d53ff;
+    --border_clr_3: #ffadc7;
+}
+
+/* default settings */
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--bg-clr);
+}
+/*header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+
+h1 {
+    font-family: "Protest Riot", sans-serif;
+    letter-spacing: 15px;
+    text-align: center;
+    color: var(--text_clr_5);
+    font-size: 48px;
+    filter: drop-shadow(0px 0px 3px var(--text_clr_2));
+    margin : 0;
+    padding: 0;   
+}
+
+/* container for card image, song, controls*/
+.song {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+}
+
+/* displaying the same image card but only half of it + a bit transparent*/
+.song_img_test {
+    background-image: url("./images/test_image.jpg");
+    background-repeat: no-repeat;
+    object-fit: cover; /* it won't stretch on resize*/
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* making sure it's at the back and our card image is at the front */
+    animation: bg_animate 15s ease-in-out infinite alternate;
+}
+
+/* animation for the transparent image*/
+@keyframes bg_animate {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+/* styling the card - > image */
+#song_img {
+    position: relative;
+    width: 330px;
+    border-radius: 1rem;
+    border: solid 2px #f0f1f3;
+    box-shadow: 3px 2px 10px var(--text_clr_3);
+    object-fit: cover;
+}
+
+button { /* change default behaviour so it can be displayed as a column in flexblox*/
+    display: block;
+    margin: 5px;
+    background-color: white;
+    border-radius: 15px;
+    /* transition on transform (here we are changing X and Y using GSAP */
+    /* we add this transition to make the buttons appears smoothly / a bit slowly and not abruptly */
+    transition: transform 0.6s ease-out; 
+}
+
+/* styling buttons borders differently*/
+
+.play_sound {
+    border: solid 3px var(--border_clr_1);
+    /* applying animation to get user attention 
+    so he can click on the play button to start music*/
+    animation: glow 1.5s ease-in-out; 
+    animation-iteration-count: 2;
+    animation-delay: 3s;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 0 0 var(--text_clr_2); /* Initial shadow */
+    }
+    50% {
+        box-shadow: 0 0 20px 10px var(--text_clr_2); /* Medium glow */
+    }
+    100% {
+        box-shadow: 0 0 0 0 var(--text_clr_2); /* Final shadow */
+    }
+}
+
+.next_btn {
+    border: solid 3px var(--border_clr_2);
+
+}
+.prev_btn {
+    border: solid 3px var(--border_clr_2);
+}
+
+
+/* styling buttons when user hover on them*/
+button:hover {
+    transform: scale(1.5);
+    background-color: var(--text_clr_2);
+    border: 2px solid var(--text_clr_3);
+    box-shadow: 15px 15px 15px var(--text_clr_2) inset;
+    cursor: pointer;
+}
+
+/*styling the button when user "click" on them*/
+button:active {
+    box-shadow: 5px 15px 15px var(--text_clr_2) inset;
+}
+
+/* styling the title song*/
+.song__title{
+    font-family: "Protest Riot", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 3px;
+    color: var(--btn-clr);
+    /*adding an animation that keep changing the text shadow (inside) + shadow (outside of text)*/
+    animation: animate 5s ease-in-out infinite alternate; /* using alternate to go back and forth in each cycle*/
+}
+
+/* animation for song title */
+@keyframes animate {
+    0%{
+        opacity: 0.5;
+        filter: drop-shadow(0 0 5px rgb(9, 2, 49));
+        text-shadow: 0px 0px 5px rgb(182, 212, 10);
+    }
+
+    10%, 20%, 30%{
+        opacity: 0.8;
+        filter: drop-shadow(0 0 5px rgb(9, 147, 172));
+        text-shadow: 0px 0px 5px rgb(43, 23, 131);
+
+    }
+
+    40%, 50%, 60% {
+        filter: drop-shadow(0 0 5px rgb(43, 23, 131));
+        text-shadow: 0px 0px 5px rgb(117, 12, 91);
+
+    } 
+    
+    70%, 80%{
+        filter: drop-shadow(0 0 5px rgb(204, 226, 78));
+        text-shadow: 0px 0px 5px rgb(177, 10, 10);
+
+    }
+
+    90%, 100% {
+        filter: drop-shadow(0 0 5px rgb(177, 10, 10));
+        text-shadow: 0px 0px 5px rgb(9, 147, 172);
+
+    }
+}
+
+/* making the audio controls hidden, a bit risky since user can't control music
+but the volumn is at the lowest possible (0.1), with the possibility to stop the music anytime*/
+
+/*at the start, the music is not playing*/
+audio {
+    display: none;
+}
+

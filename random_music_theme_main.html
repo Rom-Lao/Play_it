@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Random Song Theme</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="random_music_theme_style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Jersey+20&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Jersey+20&family=Jersey+25&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Protest+Riot&display=swap" rel="stylesheet">
+    </head>
+    <body>
+       <header>
+            <h1>Random Song Theme</h1>   
+        </header>
+        
+       <main>
+        <!-- using article, since this card can be anywhere in a website, it contains all the information needed -->
+        <article>
+            <!-- main card that contains image, background_image, song title, 
+                song controls [pause/play, go next, go previous]-->
+            <div class="song">
+                <div class="song__image">
+                    <img class="song_img_test" src="./images/test_image_3.jpg" alt="current_song_played" loading="lazy">
+                    <img id="song_img" src="./images/test_image_3.jpg" alt="current_song_played" loading="lazy">
+                    
+                </div>
+                <div class="song__title_container"><p class="song__title"></p></div>
+                <div class="song_controls">
+                    <button class="play_sound" onclick="playSound()"><img id="sound_image" src="./images/pause.png" alt=""></button>
+                    <button class="next_btn" id="next_button" onclick="goToNextImage(); goToNextSong(); goToNextTitle()"><img src="./images/next_arrow.png" alt=""></button>
+                    <button class="prev_btn" id="previous_button" onclick="goToPreviousImage(); goToPreviousSong(); goToPreviousTitle();"><img src="./images/back_arrow.png" alt=""></button>    
+        
+                </div>
+                
+            </div>
+            <audio controls>
+                <source src="./audios/test_audio.mp3">
+            </audio>
+        </article>
+       </main>
+        
+        <script src="random_music_theme_script.js" async defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+        <script src="animation_script.js"></script>
+    </body>
+</html>
