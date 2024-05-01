@@ -19,11 +19,14 @@ the card when audio is played*/
     --text_clr_1: #0077b6;
     --text_clr_2: #c05299;
     --text_clr_3: #f0fff1;
-    --text_clr_2: #9683ec;
+    --text_clr_4: #9683ec;
     --text_clr_5: #f9f5e3;
     --border_clr_1: #ff9d47;
     --border_clr_2: #9d53ff;
     --border_clr_3: #ffadc7;
+    --color_6: #aa7bc3;
+    --color_7: #290628;
+    
 }
 
 /* default settings */
@@ -98,7 +101,7 @@ here the goal is to put on top of background to add some nice effect*/
     left: 0;
     bottom: 0;
     right:0;
-    z-index: -2;
+    z-index: -1;
     background: conic-gradient(
         from var(--gradient-angle),
         var(--border_clr_1),
@@ -148,20 +151,29 @@ here the goal is to put on top of background to add some nice effect*/
     top: 50px;
     left: -10px;
     background: linear-gradient(45deg,
-        var(--bg-clr), var(--border_clr_1), var(--border_clr_2), var(--border_clr_3), var(--text_clr_1), var(--text_clr_5),
-        var(--bg-clr), var(--border_clr_1), var(--border_clr_2), var(--border_clr_3), var(--text_clr_1), var(--text_clr_5)
+        var(--color_7), var(--color_6),
+        var(--border_clr_2), var(--border_clr_3), 
+        var(--text_clr_4), var(--text_clr_5),
+
+        var(--color_7), var(--color_6), 
+        var(--border_clr_2), var(--border_clr_3),
+        var(--text_clr_4), var(--text_clr_5)
     );
     background-size: 300%;
     animation: border-animate 12s linear infinite;
 }
 .box::after {
-    filter: blur(50px);
+    filter: blur(20px) hue-rotate(45deg);
 }
+
 @keyframes border-animate {
-    0%, 100% {
-        background-position: 0 0;
+    0% {
+        background-position: 300%;
     }
     50% {
+        background-position: 0 0;
+    }
+    100% {
         background-position: 300%;
     }
 }
