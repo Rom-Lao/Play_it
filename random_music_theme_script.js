@@ -116,5 +116,24 @@ window.addEventListener('load', function(){
     audio_source.onended = function(){
         pause_play_icon.src = "./images/pause.png";
         border_effect.style.visibility = "hidden";
+        isPlay = 0;
     }
 });
+
+let music_loop = document.querySelector(".music_loop");
+let music_loop_icon = document.getElementById("loop_music_icon");
+let isLoop = 0;
+function loopMusic(){
+    if(isLoop == 0) {
+        audio_source.loop = true;
+        music_loop.classList.add("loop_on");
+        music_loop_icon.src = "./images/loop_music_on.png";
+        isLoop = 1;
+    }
+    else{
+        audio_source.loop = false;
+        music_loop.classList.remove("loop_on");
+        music_loop_icon.src = "./images/loop_music.png"
+        isLoop = 0;
+    }
+}
