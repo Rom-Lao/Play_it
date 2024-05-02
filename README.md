@@ -27,6 +27,7 @@
 5. **When a song ends, it will**
    * Change the icon play/pause.
    * Stop the glowing border.
+6. **When user open the website for the first time, a small animation on the button play shows up**
 
 # Technology used 
 * HTML
