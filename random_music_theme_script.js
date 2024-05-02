@@ -8,13 +8,7 @@ let imageUrls = ['./images/image_1.jpg',
                 './images/image_5.jpg', 
                 './images/image_6.jpg', 
                 './images/image_7.jpg', 
-                './images/image_8.jpg', 
-                './images/image_9.jpg', 
-                './images/image_10.jpg', 
-                './images/image_11.jpg', 
-                './images/image_12.jpg',
-                './images/image_13.jpg',  
-                './images/image_14.jpg'];
+                './images/image_8.jpg'];
 
 // same idea as image, we need to know the index in order to play a specific music
 let audioShowIndex = 0;
@@ -46,9 +40,7 @@ let isPlay = 0;
 // to change background image and make it the same as the image in the card
 let bg_image = document.querySelector(".song_img_test");
 
-// controlling audio (playing or paused) 
 //and changing the icon accordingly
-//let my_audio = document.querySelector("audio");
 let pause_play_icon = document.querySelector("#pause_play_icon");
 
 // changing image on click
@@ -112,25 +104,30 @@ function updateImage(){
 function updateAudio(){
     //fetching the correct song
     audio_source.src = audioUrls[audioShowIndex];
-    audio_source.volume = 0.2;
+    audio_source.volume = 0.3;
     
-    // if isPlay = 0 it means it's paused so we need 
-    //to play is and change it to 1
-    if(isPlay == 0){
-        // 1 is the highest ; and 0.1 is muted  
-        audio_source.load(); // we need to load the audio first
-        audio_source.play();
+    // if isPlay = 1 then play the audio
+    if(isPlay == 1){
+        audio_source.play(); 
+    }  
+};
+
+/*play/pause audio on click */
+function isPlaying(){
+    if(audio_source.paused){
+        audio_source.volume = 0.3;
         pause_play_icon.src = "./images/play.png";
         border_effect.style.visibility = "visible";
+        audio_source.play();
         isPlay = 1;
-    } 
-    else{
+    }
+    else {
         audio_source.pause();
         border_effect.style.visibility = "hidden";
         pause_play_icon.src = "./images/pause.png";
         isPlay = 0;
     }
-};
+}
 
 // printing current song title
 function updateText(){
