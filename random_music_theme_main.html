@@ -33,23 +33,28 @@
             <div class="song">
                 <div class="box">
                     <img id="song_img" src="./images/test_image_3.jpg" alt="current_song_played" loading="lazy">
+                       
                 </div>
 
                 <div class="song__image">
                     <img class="song_img_test" src="./images/test_image_3.jpg" alt="current_song_played" loading="lazy">
                 </div>
+                
                 <div class="song__title_container"><p class="song__title"></p></div>
+
                 <div class="song_controls">
                     <button class="play_sound" onclick="updateAudio()"><img id="pause_play_icon" src="./images/pause.png" alt=""></button>
                     <button class="next_btn" id="next_button" onclick="goToNextImage(); goToNextSong(); goToNextTitle()"><img src="./images/next_arrow.png" alt=""></button>
                     <button class="prev_btn" id="previous_button" onclick="goToPreviousImage(); goToPreviousSong(); goToPreviousTitle();"><img src="./images/back_arrow.png" alt=""></button>
                     <button class="music_loop" onclick="loopMusic()"><img id="loop_music_icon" src="./images/loop_music.png" alt=""></button>    
                 </div>
-                
             </div>
+        
             <audio>
                 <source src="./audios/test_audio.mp3">
             </audio>
+
+            
         </article>
        </main>
 

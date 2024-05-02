@@ -46,11 +46,6 @@ the card when audio is played*/
 body{
     background-color: var(--bg-clr);
 }
-/*header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}*/
 
 h1 {
     font-family: "Protest Riot", sans-serif;
@@ -59,8 +54,6 @@ h1 {
     color: var(--text_clr_5);
     font-size: 48px;
     filter: drop-shadow(0px 0px 3px var(--text_clr_2));
-    margin : 0;
-    padding: 0;   
 }
 
 /* container for card image, song, controls*/
@@ -186,6 +179,17 @@ here the goal is to put on top of background to add some nice effect*/
     }
 }
 
+/* make the controls on the left so they won't end up 
+at the very bottom to avoid having a weird scroll,
+then with GSAP we will make it invisible at first, then it'll show up
+*/
+.song_controls{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 120px;
+    left: 800px;
+}
 /* change default behaviour so it can be displayed as a column in flexblox*/
 button{ 
     display: block;
@@ -308,11 +312,23 @@ audio {
 /*styling footer*/
 .footer {
     text-align: right;
-    margin-top: -20px;
+    margin-top: 100px;
     margin-right: 5px;
 }
 span {
     font-size: 11px;
     color: white;
 
+}
+
+/* Add responsive styles */
+@media screen and (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    .song_controls{
+        top: 220px;
+        left: 400px;
+    }
+    .footer {
+      margin-top: 40px;
+    }
 }
