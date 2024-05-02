@@ -1,17 +1,44 @@
 let imageShowIndex = 0; // to move from image to image
 
 // this is where we store our images, it is hard coded, can be improved using a file
-let imageUrls = ['./images/test_image_3.jpg','./images/test_image_2.jpg', './images/test_image.jpg'];
+let imageUrls = ['./images/image_1.jpg',
+                './images/image_2.jpg', 
+                './images/image_3.jpg', 
+                './images/image_4.jpg', 
+                './images/image_5.jpg', 
+                './images/image_6.jpg', 
+                './images/image_7.jpg', 
+                './images/image_8.jpg', 
+                './images/image_9.jpg', 
+                './images/image_10.jpg', 
+                './images/image_11.jpg', 
+                './images/image_12.jpg',
+                './images/image_13.jpg',  
+                './images/image_14.jpg'];
 
 // same idea as image, we need to know the index in order to play a specific music
 let audioShowIndex = 0;
 
 // we store all our audio here
-let audioUrls = ['./audios/test_audio.mp3', './audios/test_audio_2.mp3','./audios/test_audio_3.mp3'];
+let audioUrls = ['./audios/audio_1.mp3', 
+                './audios/audio_2.mp3',
+                './audios/audio_3.mp3',
+                './audios/audio_4.mp3',
+                './audios/audio_5.mp3',
+                './audios/audio_6.mp3',
+                './audios/audio_7.mp3',
+                './audios/audio_8.mp3'];
 
 // storing title songs
 let titleShowIndex = 0;
-let titles =['G(i)dle - Lion','Robin', 'Sugar song'];
+let titles =['G(i)dle - Lion',
+            'Twice - Strawberry',
+            'Mamamoo - L.I.E.C',
+            'Twice - Likey',
+            'BIBI - Bam Yang Gang',
+            'Twice - Fancy',
+            'Mamamoo - Waggy',
+            'G(i)dle - Fate'];
 
 // saving state of audio (playing or paused)
 let isPlay = 0;
@@ -85,12 +112,12 @@ function updateImage(){
 function updateAudio(){
     //fetching the correct song
     audio_source.src = audioUrls[audioShowIndex];
+    audio_source.volume = 0.2;
     
     // if isPlay = 0 it means it's paused so we need 
     //to play is and change it to 1
     if(isPlay == 0){
         // 1 is the highest ; and 0.1 is muted  
-        audio_source.volume = 0.1;
         audio_source.load(); // we need to load the audio first
         audio_source.play();
         pause_play_icon.src = "./images/play.png";

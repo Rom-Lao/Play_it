@@ -49,11 +49,30 @@ body{
 
 h1 {
     font-family: "Protest Riot", sans-serif;
-    letter-spacing: 15px;
+    letter-spacing: 10px;
     text-align: center;
     color: var(--text_clr_5);
     font-size: 48px;
-    filter: drop-shadow(0px 0px 3px var(--text_clr_2));
+    animation: header_animate 1.5s linear forwards;
+}
+/*animation for header*/
+@keyframes header_animate {
+    0% {
+        opacity: 0;
+        transform: translate(-10px,10px);
+    }
+
+    50% {
+        opacity: 0.8;
+        filter: drop-shadow(2px 2px 5px var(--grad_clr_4));
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translate(0,15px);
+        color: var(--text_clr_5);
+        filter: drop-shadow(0px 0px 3px var(--text_clr_2));
+    }
 }
 
 /* container for card image, song, controls*/
@@ -77,7 +96,7 @@ h1 {
     top: 0;
     left: 0;
     z-index: -1; /* making sure it's at the back and our card image is at the front */
-    animation: bg_animate 15s ease-in-out infinite alternate;
+    animation: bg_animate 10s ease-in-out infinite alternate;
 }
 
 /* animation for the transparent image*/
@@ -111,7 +130,7 @@ here the goal is to put on top of background to add some nice effect*/
         var(--grad_clr_4),
         var(--grad_clr_5),
         var(--grad_clr_6));
-    animation: rotation 15s ease-in-out infinite alternate;                            
+    animation: rotation 10s ease-in-out infinite alternate;                            
 }
 
 @keyframes rotation {
@@ -134,7 +153,23 @@ here the goal is to put on top of background to add some nice effect*/
     border: solid 2px #f0f1f3;
     box-shadow: 3px 2px 10px var(--text_clr_3);
     object-fit: cover;
+    animation: image_animate 2s linear forwards;
 }
+
+@keyframes image_animate {
+    0% {
+        opacity: 0;
+        transform: translate(-100px,0);
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 50px);
+    }
+}
+
 
 /* adding glowing border effect on image */
 .box{
@@ -148,8 +183,8 @@ here the goal is to put on top of background to add some nice effect*/
     position: absolute;
     border-radius: 1rem;
     width: calc(100% + 20px);
-    height: calc(100% + 20px);
-    top: 50px;
+    height: calc(100% + 15px);
+    top: 42px;
     left: -10px;
     background: linear-gradient(45deg,
         var(--color_7), var(--color_6),
@@ -164,7 +199,7 @@ here the goal is to put on top of background to add some nice effect*/
     animation: border-animate 12s linear infinite;
 }
 .box::after {
-    filter: blur(20px) hue-rotate(45deg);
+    filter: blur(20px);
 }
 
 @keyframes border-animate {
@@ -190,6 +225,7 @@ then with GSAP we will make it invisible at first, then it'll show up
     top: 120px;
     left: 800px;
 }
+
 /* change default behaviour so it can be displayed as a column in flexblox*/
 button{ 
     display: block;
@@ -197,20 +233,24 @@ button{
     background-color: white;
     padding: 4px;
     border-radius: 50%;
-    /* transition on transform (here we are changing X and Y using GSAP */
-    /* we add this transition to make the buttons appears smoothly / a bit slowly and not abruptly */
-    transition: transform 0.6s ease-out; 
+    animation: btn_animate 2s linear forwards;
+}
+@keyframes btn_animate{
+    0%, 10%, 20%, 60% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: rotate(360deg);
+    }
 }
 
 /* styling buttons borders differently*/
-
 .play_sound {
     border: solid 3px var(--border_clr_1);
     /* applying animation to get user attention 
     so he can click on the play button to start music*/
-    animation: glow 1.5s ease-in-out; 
-    animation-iteration-count: 2;
-    animation-delay: 3s;
+    animation: glow 1.5s ease-in-out 2s 2, btn_animate 2s linear forwards; //* delay 2s, repeat 2*/
 }
 
 @keyframes glow {
@@ -225,26 +265,20 @@ button{
     }
 }
 
-.next_btn {
+.next_btn , .prev_btn {
     border: solid 2px var(--border_clr_2);
 
 }
-.prev_btn {
-    border: solid 2px var(--border_clr_2);
-}
-
 .music_loop {
     border: solid 2px var(--grad_clr_4);
 }
 
 .loop_on {
-    border: solid 2px var(--bg-clr);
+    border: solid 4px var(--bg-clr);
 }
-
 
 /* styling buttons when user hover on them*/
 button:hover {
-    transform: scale(1.5);
     background-color: var(--grad_clr_6);
     border: 2px solid var(--text_clr_3);
     box-shadow: 15px 15px 30px var(--grad_clr_1) inset;
@@ -264,9 +298,18 @@ button:active {
     padding: 3px;
     color: var(--btn-clr);
     /*adding an animation that keep changing the text shadow (inside) + shadow (outside of text)*/
-    animation: animate 5s ease-in-out infinite alternate; /* using alternate to go back and forth in each cycle*/
+    animation: animate 5s ease-in-out infinite alternate, title_showing 2s linear forwards; /* using alternate to go back and forth in each cycle*/
 }
 
+@keyframes title_showing {
+    0%, 10%, 20%, 30%, 60%{
+        opacity: 0;
+    }
+    70%, 100% {
+        opacity: 1;
+        transform: translate(0,5px);
+    }
+}
 /* animation for song title */
 @keyframes animate {
     0%{
