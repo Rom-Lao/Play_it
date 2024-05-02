@@ -1,0 +1,23 @@
+{
+  "name": "kpop_collection_songs",
+  "version": "1.0.0",
+  "description": "![output](https://github.com/Rom-Lao/BestPart_of_Ksongs/assets/167688624/cfd28aee-e5f7-4991-a263-e68a718055b5)",
+  "main": "animation_script.js",
+  "dependencies": {
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rom-Lao/kpop_collections_short_version.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rom-Lao/kpop_collections_short_version/issues"
+  },
+  "homepage": "https://github.com/Rom-Lao/kpop_collections_short_version#readme"
+}

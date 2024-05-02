@@ -32,13 +32,13 @@ function middle(){
         x: 0,
         y: 60,
         ease:"sine.in",
-        delay: 1, //important otherwise it will come with header
+        delay: 2, //important otherwise it will come with header
         duration: 1.5
     })
     gsap.fromTo("button", { opacity: 0}, {
         opacity: 1,
         ease: "expo.inOut",
-        delay: 2,
+        delay: 3,
         x: -10,
         y: 30,
         rotation: 360,
@@ -54,7 +54,7 @@ function conclusion(){
         duration: 1.5,
         autoAlpha: 1,
         y: 20
-    }, "3") /* last one to appear*/
+    }, "4") /* last one to appear*/
     return tl
 }
 
