@@ -7,27 +7,29 @@
 
 # Features
 1. **When a user plays a song, a glowing border will appear.**
-2. **Song can be controled via 4 buttons : Play/Pause, next song, previous song, loop song.**
-3. **Loop button will make the music automatically replay, disable it to undo this effect.**
+2. **Song timer is displayed**
+3. **Current song and total number of songs displayed**
+4. **Song can be controled via 4 buttons : Play/Pause, next song, previous song, loop song.**
+5. **Loop button will make the music automatically replay, disable it to undo this effect.**
    * When user click on it, the icon changes to indicate that the music will loop.
-5. **Clicking on "next" or "previous" icon will change**
+6. **Clicking on "next" or "previous" icon will change**
    * music.
    * music title.
    * image card.
    * background image.
      
-6. **Clicking on play/pause will make the following changes**
+7. **Clicking on play/pause will make the following changes**
    * Pause/play icon will change accordingly.
    * If the song is paused then the glowing effect will also stop.
     
-7. **Audio State is saved when user changes a song**
+8. **Audio State is saved when user changes a song**
    * If user chooses to play a song, and move to the next/previous one, then the state is saved and the audio will play. Otherwise, the audio is not played.
      
-8. **When a song ends, it will**
+9. **When a song ends, it will**
    * Change the icon play/pause.
    * Stop the glowing border.
      
-9. **When user open the website for the first time, a small animation on the button play shows up**
+10. **When user open the website for the first time, a small animation on the button play shows up**
 
 # Technology used 
 * HTML
