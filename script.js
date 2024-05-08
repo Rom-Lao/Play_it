@@ -128,7 +128,7 @@ function decreaseDuration(){
         //console.log("calling updateAudio inside the decrease ");
         updateAudioDuration();
     }
-    console.log("decreasing ", duration_1);
+    //console.log("decreasing ", duration_1);
     document.querySelector(".song_timer").innerHTML = `${formatTime(duration_1)}`;
 }
 
