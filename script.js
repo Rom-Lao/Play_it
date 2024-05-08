@@ -90,7 +90,7 @@ function updateSong(){
 function updateAudioDuration(){
     audioDuration = audio_source.duration;
     duration_1 = audioDuration;
-    console.log("audioDuration in updateAudio() ", audioDuration);
+    //console.log("audioDuration in updateAudio() ", audioDuration);
     document.querySelector(".song_timer").innerHTML = `${formatTime(audioDuration)}`;
 }
 
