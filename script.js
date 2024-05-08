@@ -1,6 +1,16 @@
 let imageShowIndex = 0; //to move from image to image
 
 let currentIndex = 0;
+
+let songs_part;
+let artist_name;
+let song_title;
+let current_time;
+
+let timerInterval; // Variable to store the interval ID
+let audioDuration;
+let duration_1;
+
 const song_directory = `./songs/`;
 const songs_information = [
     `${song_directory}Kim-Lim_Yo-Soul.mp3`,
@@ -13,11 +23,6 @@ const songs_information = [
     `${song_directory}Mamamoo_LIEC.mp3`,
     `${song_directory}Twice_Strawberry.mp3`
 ];
-
-let songs_part;
-let artist_name;
-let song_title;
-let current_time;
 
 const image_directory = `./images/`;
 
@@ -34,29 +39,6 @@ const imageUrls = [
     `${image_directory}twice_strawberry.jpg`
 ];
 
-// same idea as image, we need to know the index in order to play a specific music
-let audioShowIndex = 0;
-
-// we store all our audio here
-let audioUrls = [`./audios/audio_1.mp3`, 
-                `./audios/audio_2.mp3`,
-                `./audios/audio_3.mp3`,
-                `./audios/audio_4.mp3`,
-                `./audios/audio_5.mp3`,
-                `./audios/audio_6.mp3`,
-                `./audios/audio_7.mp3`,
-                `./audios/audio_8.mp3`];
-
-// storing title songs
-let titleShowIndex = 0;
-let titles =[`G(i)dle - Lion`,
-            `Twice - Strawberry`,
-            `Mamamoo - L.I.E.C`,
-            `Twice - Likey`,
-            `BIBI - Bam Yang Gang`,
-            `Twice - Fancy`,
-            `Mamamoo - Waggy`,
-            `G(i)dle - Fate`];
 
 // saving state of audio (playing or paused)
 let isPlay = 0;
@@ -79,44 +61,6 @@ let border_effect = document.querySelector(".box");
 // calling updateText() to display current song title
 updateSong(); 
 
-
-// keeping track of images positions, if previous then index - 1, if next -> index + 1
-// if we are at the end of our images then go back to index "0"
-// if we at index = 0 and we click prev, we go to last element of imageUrls
-
-//after user clicks, we need to update the image
-/*function goToPreviousImage(){
-    imageShowIndex = (imageShowIndex == 0) ? imageUrls.length - 1 : imageShowIndex - 1;
-    updateImage();
-};
-function goToNextImage(){
-    imageShowIndex = (imageShowIndex == imageUrls.length - 1) ? 0 : imageShowIndex + 1;
-    updateImage(); 
-};
-
-
-//changing song, same idea as changing image
-//after user clicks, we need to update the song
-function goToPreviousSong() {
-    audioShowIndex = (audioShowIndex == 0) ? audioUrls.length - 1 : audioShowIndex - 1;
-    updateAudio(); 
-};
-function goToNextSong(){
-    audioShowIndex = (audioShowIndex == audioUrls.length - 1) ? 0 : audioShowIndex + 1;
-    updateAudio();
-};
-
-
-// changing Text, same idea as changing image - audio
-//after user clicks, we need to update the song title
-function goToPreviousTitle(){
-    titleShowIndex = (titleShowIndex == 0) ? titles.length - 1 : titleShowIndex - 1;
-    updateText();
-};
-function goToNextTitle(){
-    titleShowIndex = (titleShowIndex == titles.length - 1) ? 0 : titleShowIndex + 1;
-    updateText();
-};*/
 
 function goPrev(){
     currentIndex = (currentIndex == 0) ? songs_information.length - 1 : currentIndex - 1;
@@ -142,30 +86,6 @@ function updateSong(){
     document.querySelector(".song_position").innerHTML = `${currentIndex+1}/${songs_information.length}`;
 }
 
-// updating image, we grab the id of our img, then we change the .src
-// we already know the index value from goToNextImage() and goToPreviousImage()
-/*function updateImage(){
-    image.src = imageUrls[imageShowIndex];
-    bg_image.src = imageUrls[imageShowIndex];
-    updateAudio(); //calling audio because image changed
-};*/
-
-//changing song, making sure that we only play the song if "isPlay = 1"
-/*function updateAudio(){
-    //fetching the correct song
-    audio_source.src = audioUrls[audioShowIndex];
-    audio_source.volume = 0.3;
-    
-    // if isPlay = 1 then play the audio
-    if(isPlay == 1){
-        audio_source.play(); 
-    }  
-};*/
-
-let timerInterval; // Variable to store the interval ID
-let audioDuration;
-let duration_1;
-
 
 function updateAudioDuration(){
     audioDuration = audio_source.duration;
@@ -184,7 +104,7 @@ audio_source.addEventListener('loadedmetadata', updateAudioDuration);
 function isPlaying(){
     if(audio_source.paused){
         timerInterval = setTimer();
-        audio_source.volume = 0.3;
+        audio_source.volume = 0.2;
         //current_time = formatTime(audio_source.currentTime);
         //document.querySelector(".song_timer").innerHTML = current_time;
         pause_play_icon.src = `${image_directory}play.png`;
@@ -205,8 +125,7 @@ function isPlaying(){
 function decreaseDuration(){
     duration_1 = duration_1 - 1 ; 
     if(duration_1 < 0 ) {
-        //duration_1 = 0;
-        console.log("calling updateAudio inside the decrease ");
+        //console.log("calling updateAudio inside the decrease ");
         updateAudioDuration();
     }
     console.log("decreasing ", duration_1);
@@ -214,20 +133,11 @@ function decreaseDuration(){
 }
 
 function formatTime(seconds) {
-    // Convert seconds to minutes and seconds
-    /*const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
-    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;*/
-
-    // using Dtae object
+    // using Date object
     const date = new Date(null);
     date.setSeconds(seconds);
     return date.toLocaleTimeString('en', { minute: '2-digit', second:'2-digit'});
 }
-// printing current song title
-/*function updateText(){
-     document.querySelector(".song__title").innerHTML = titles[titleShowIndex];
-};*/
 
 // change icon play button and 
 //disable border image glowing effect when audio ends
@@ -238,7 +148,7 @@ window.addEventListener('load', function(){
         clearInterval(timerInterval);
         isPlay = 0;
         //reset timer when audio ends without pausing
-        console.log("audioDuration, when audio ends");
+        //console.log("audioDuration, when audio ends");
         document.querySelector(".song_timer").innerHTML = `${formatTime(audioDuration)}`;
     }
 });
