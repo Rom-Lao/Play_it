@@ -1,4 +1,5 @@
-[Demo to the project](https://www.kapwing.com/videos/6633c8348e7653739132d3cc)
+# Project link
+https://play-it-ksongs.netlify.app/
 
 # Play_it
 
