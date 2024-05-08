@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -10,7 +6,7 @@
         <title>Random Song Theme</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./random_music_theme_style.css">
+        <link rel="stylesheet" href="style.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,37 +25,37 @@
        <main>
         <!-- using article, since this card can be anywhere in a website, it contains all the information needed -->
         <article>
-            <!-- main card that contains image, background_image, song title, 
-                song controls [pause/play, go next, go previous]-->
             <div class="song">
                 <div class="box">
-                    <img id="song_img" src="./images/image_1.jpg" alt="current_song_played">  
+                    <img id="song_img" src="./images/yo_soul.jpg" alt="current_song_played">
                 </div>
 
                 <div class="song__image">
-                    <img class="song_img_test" src="./images/image_1.jpg" alt="current_song_played">
+                    <img class="song_img_test" src="./images/yo_soul.jpg" alt="current_song_played">
                 </div>
-
                 <p class="song__title"></p>
-
                 <div class="song_controls">
+                    <p class="song_position"></p>     
                     <button class="play_sound" onclick="isPlaying()"><img id="pause_play_icon" src="./images/pause.png" alt=""></button>
-                    <button class="next_btn" id="next_button" onclick="goToNextImage(); goToNextSong(); goToNextTitle()"><img src="./images/next_arrow.png" alt=""></button>
-                    <button class="prev_btn" id="previous_button" onclick="goToPreviousImage(); goToPreviousSong(); goToPreviousTitle();"><img src="./images/back_arrow.png" alt=""></button>
-                    <button class="music_loop" onclick="loopMusic()"><img id="loop_music_icon" src="./images/loop_music.png" alt=""></button>    
+                    <button class="next_btn" id="next_button" onclick="goNext()"><img src="./images/next_arrow.png" alt=""></button>
+                    <button class="prev_btn" id="previous_button" onclick="goPrev()"><img src="./images/back_arrow.png" alt=""></button>
+                    <button class="music_loop" onclick="loopMusic()"><img id="loop_music_icon" src="./images/loop_music.png" alt=""></button>
+                    <p class="song_timer"></p>
                 </div>
             </div>
-        
+
             <audio>
-                <source src="./audios/audio_1.mp3">
+                <source src="./songs/Kim-Lim_Yo-Soul.mp3">
             </audio>
         </article>
+
+        
        </main>
 
        <footer class="footer">
         <span>© All rights of music are reserved to their respective owners</span>
        </footer>
         
-        <script src="random_music_theme_script.js" async defer></script>
+        <script src="script.js" async defer></script>
     </body>
 </html>

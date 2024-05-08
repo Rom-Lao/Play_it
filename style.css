@@ -296,7 +296,10 @@ button:active {
     font-size: 20px;
     font-weight: bold;
     padding: 3px;
-    color: var(--btn-clr);
+    background-color: white;
+    border: solid 2px var(--color_7);
+    border-radius: 50px;
+    color: var(--bg-clr);
     /*adding an animation that keep changing the text shadow (inside) + shadow (outside of text)*/
     animation: animate 5s ease-in-out infinite alternate, title_showing 2s linear forwards; /* using alternate to go back and forth in each cycle*/
 }
@@ -343,6 +346,18 @@ button:active {
 
     }
 }
+
+.song_position, .song_timer {
+    font-family: "Protest Riot", sans-serif;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text_clr_2);
+    background-color: var(--grad_clr_2);
+    border-radius: 10px;
+    animation: btn_animate 2s linear forwards;
+}
+
 
 /* making the audio controls hidden, a bit risky since user can't control music
 but the volumn is at the lowest possible (0.1), with the possibility to stop the music anytime*/
